@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>NIKKA MD OFFICIAL</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+  }
+  /* Loading Screen */
+  #loading-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: black;
+    color: lime;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    flex-direction: column;
+  }
+  #loading-screen h1 {
+    text-shadow: 0 0 15px lime;
+  }
+  #loading-screen p {
+    color: gray;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  /* Full-window YouTube background */
+  #bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+  header, section {
+    position: relative;
+    z-index: 1;
+  }
+  header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  header img {
+    width: 60px; height: 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lime;
+  }
+  header h1 {
+    margin: 0;
+    color: lime;
+    text-shadow: 0 0 10px lime;
+  }
+  button {
+    padding: 10px 15px; margin: 5px;
+    border: none; border-radius: 5px;
+    cursor: pointer; font-weight: bold;
+  }
+  .red-btn { background: red; color: white; }
+  .black-btn { background: black; color: white; }
+  /* Chat Box */
+  #chat-box {
+    position: fixed; bottom: 10px; right: 10px;
+    width: 300px; background: #1a1a1a;
+    border-radius: 10px; box-shadow: 0 0 10px black;
+    color: white; z-index: 1;
+  }
+  #chat-header { background: red; padding: 10px; font-weight: bold; }
+  #chat-messages {
+    height: 200px; overflow-y: auto; padding: 10px;
+    background: #2a2a2a; text-align: left;
+  }
+  #chat-input { display: flex; }
+  #message {
+    flex: 1; padding: 8px; border: none; outline: none;
+    background: #333; color: white;
+  }
+  #send-btn, #music-btn {
+    background: red; color: white; padding: 8px 12px; cursor: pointer;
+  }
+  #send-btn:hover, #music-btn:hover { background: darkred; }
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loading-screen">
+  <h1>💻 NIKKA MD OFFICIAL</h1>
+  <p>Loading... Please wait</p>
+</div>
+
+<!-- YouTube Background -->
+<iframe id="bg-video"
+  src="https://www.youtube.com/embed/bgzXYUV3Dkg?autoplay=1&mute=1&controls=0&loop=1&playlist=bgzXYUV3Dkg&modestbranding=1"
+  frameborder="0" allow="autoplay; loop; muted"
+  allowfullscreen>
+</iframe>
+
+<header>
+  <img src="https://i.ibb.co/g4mLVbT/hacker-logo.png" alt="Logo">
+  <div>
+    <h1>NIKKA MD OFFICIAL</h1>
+    <p>Owner - <strong>NIKILA KESHARA</strong></p>
+    <p>WhatsApp: <a href="https://wa.me/94761527735" style="color:lime;">0761527735</a></p>
+  </div>
+</header>
+
+<section>
+  <h2>NIKKA MD — WhatsApp User Bot</h2>
+  <p>Fast, reliable automation for WhatsApp. Use the pair/QR to connect — deploy on Render, Koyeb or GitHub.</p>
+  
+  <button class="red-btn">📟 Get Pair Code</button>
+  <button class="red-btn">📷 Show QR Code</button>
+  <button class="red-btn" onclick="window.open('https://wa.me/94761527735','_blank')">📞 Contact Owner</button>
+  <button class="black-btn">
+    📢 <a href="https://whatsapp.com/channel/0029Va8Yh2jJpe8bn5Tayl1Y" target="_blank" style="color:white;">Join Channel</a>
+  </button>
+
+  <h3>Bot Platforms:</h3>
+  <button class="black-btn">Render</button>
+  <button class="black-btn">Koyeb</button>
+  <button class="black-btn">GitHub</button>
+
+  <br><br>
+  <button id="music-btn">Play Background Music</button>
+</section>
+
+<!-- Chat Box -->
+<div id="chat-box">
+  <div id="chat-header">NIKKA Support</div>
+  <div id="chat-messages">
+    <p><strong>Bot:</strong> Hi 👋 Need help connecting your bot? Type your message below.</p>
+  </div>
+  <div id="chat-input">
+    <input type="text" placeholder="Type message..." id="message">
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+<script>
+// Hide loading screen after 2 seconds
+setTimeout(() => {
+  document.getElementById("loading-screen").style.display = "none";
+  document.body.style.overflow = "auto";
+}, 2000);
+
+// Chat send functionality
+document.getElementById("send-btn").addEventListener("click", ()=>{
+  const msg = document.getElementById("message").value.trim();
+  if (msg) {
+    const el = document.createElement("p");
+    el.innerHTML = "<strong>You:</strong> " + msg;
+    document.getElementById("chat-messages").appendChild(el);
+    document.getElementById("message").value = '';
+  }
+});
+
+// Unmute video
+document.getElementById("music-btn").addEventListener("click", ()=>{
+  const iframe = document.getElementById("bg-video");
+  iframe.src = iframe.src.replace("mute=1", "mute=0");
+});
+</script>
+
+</body>
+</html>
