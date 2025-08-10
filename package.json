@@ -1,0 +1,21 @@
+{
+  "name": "nikka-md-official",
+  "version": "1.0.0",
+  "description": "NIKKA MD OFFICIAL bot web interface with loading screen, YouTube background and chat box",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "nikka-md",
+    "web",
+    "chat",
+    "qr-code"
+  ],
+  "author": "NIKILA KESHARA",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
